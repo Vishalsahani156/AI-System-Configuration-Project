@@ -1,4 +1,4 @@
-# Cyber_With_Vijay — AI Voice Command Center
+# Cyber_With_Vishal — AI Voice Command Center
 
 A high-performance AI system featuring **Riyu**, a sweet Indian female voice assistant.
 

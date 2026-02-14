@@ -1,0 +1,10 @@
+{
+  "name": "Riyu",
+  "description": "A production-ready AI command center featuring Riyu, a real-time multilingual Indian female AI voice assistant with multi-agent capabilities and secure authentication.",
+  "requestFramePermissions": [
+    "microphone",
+    "camera",
+    "geolocation",
+    "display-capture"
+  ]
+}

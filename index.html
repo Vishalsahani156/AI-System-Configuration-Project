@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cyber_With_Vijay | RIYU OS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cyber-pink: #f472b6;
+      --cyber-purple: #a855f7;
+      --cyber-cyan: #22d3ee;
+      --bg-dark: #020617;
+    }
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: var(--bg-dark);
+      margin: 0;
+      overflow: hidden;
+      color: #e2e8f0;
+    }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+    .cyber-bg {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg, #020617 0%, #0f172a 100%);
+      z-index: -1;
+    }
+    .cyber-bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(168, 85, 247, 0.03) 1px, transparent 1px);
+      background-size: 100% 4px;
+      pointer-events: none;
+      animation: scanline 12s linear infinite;
+    }
+    @keyframes scanline {
+      from { transform: translateY(0); }
+      to { transform: translateY(100%); }
+    }
+    .glass-card {
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(40px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
+    }
+    .glow-purple { box-shadow: 0 0 50px rgba(168, 85, 247, 0.1); }
+    
+    .riyu-avatar-container {
+      position: relative;
+      border-radius: 4rem;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .riyu-avatar-container.active::before {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border: 2px solid var(--cyber-pink);
+      border-radius: 4.5rem;
+      opacity: 0.5;
+      animation: pulse-ring 2s infinite;
+    }
+
+    @keyframes pulse-ring {
+      0% { transform: scale(1); opacity: 0.5; }
+      100% { transform: scale(1.1); opacity: 0; }
+    }
+
+    .message-bubble {
+      border-radius: 1.5rem;
+      padding: 1.25rem;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); }
+    ::-webkit-scrollbar-thumb { background: rgba(168, 85, 247, 0.4); border-radius: 10px; }
+  </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.38.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+  <div class="cyber-bg"></div>
+  <div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>

@@ -22,7 +22,7 @@ const App: React.FC = () => {
   const geminiRef = useRef<GeminiService | null>(null);
 
   // Avatar source (using the provided reference photo visual description)
-  const riyuProfileImg = "https://images.unsplash.com/photo-1618336753974-aae8e04506aa?q=80&w=2070&auto=format&fit=crop";
+  const tomarProfileImg = "https://images.unsplash.com/photo-1618336753974-aae8e04506aa?q=80&w=2070&auto=format&fit=crop";
 
   useEffect(() => {
     const handleStatus = () => setIsOffline(!navigator.onLine);
@@ -70,7 +70,7 @@ const App: React.FC = () => {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     setUser({ 
-      username: 'Vishal', role: 'admin', email: 'v@c.com',
+      username: 'Vijay', role: 'admin', email: 'v@c.com',
       stats: { level: 99, xp: 9999, unlockedItems: ['full-os-access'] }
     });
   };
@@ -93,7 +93,7 @@ const App: React.FC = () => {
         setMessages(prev => [...prev, { id: Date.now().toString(), sender: 'ai', text: response, timestamp: new Date() }]);
       }
     } catch (e) { 
-      setMessages(prev => [...prev, { id: Date.now().toString(), sender: 'ai', text: "RIYU: Signal lost. Vishal, local memory update checked.", timestamp: new Date() }]);
+      setMessages(prev => [...prev, { id: Date.now().toString(), sender: 'ai', text: "TOMAR: Signal lost. Vijay, local memory update checked.", timestamp: new Date() }]);
     }
   };
 
@@ -134,7 +134,7 @@ const App: React.FC = () => {
         <div className="glass-card p-16 rounded-[4rem] w-full max-w-2xl border-white/5 glow-purple text-center relative overflow-hidden group">
           <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-transparent via-purple-600 to-transparent opacity-50"></div>
           
-          <h1 className="text-6xl font-black text-white tracking-[0.4em] mb-4 drop-shadow-2xl">CYBER_WITH_VIJAY</h1>
+          <h1 className="text-6xl font-black text-white tracking-[0.4em] mb-4 drop-shadow-2xl">TOMAR AI SYSTEM</h1>
           <p className="text-purple-400 text-xs font-black uppercase tracking-[1.2em] mb-16 opacity-80">Command Hub & OS Control</p>
           
           <form onSubmit={handleLogin} className="space-y-10 max-w-sm mx-auto">
@@ -142,7 +142,7 @@ const App: React.FC = () => {
               <input 
                 className="w-full bg-white/5 border border-white/10 rounded-3xl p-6 text-white font-bold text-center tracking-widest outline-none focus:border-purple-500/50 transition-all focus:bg-white/[0.08]" 
                 placeholder="ADMIN_ID" 
-                defaultValue="Vishal_ADMIN" 
+                defaultValue="Vijay_ADMIN" 
               />
               <div className="absolute inset-0 rounded-3xl border border-purple-500/0 group-focus-within/input:border-purple-500/30 -m-1 pointer-events-none transition-all"></div>
             </div>
@@ -170,7 +170,7 @@ const App: React.FC = () => {
         <div className="p-10 flex items-center justify-between h-32 border-b border-white/5">
            {isSidebarOpen && (
              <div className="flex flex-col">
-               <span className="font-black tracking-[0.4em] text-2xl text-white">CWV_OS</span>
+               <span className="font-black tracking-[0.4em] text-2xl text-white">TOMAR_OS</span>
                <span className="text-[10px] text-purple-400 font-black uppercase tracking-widest mt-1 opacity-80">Kernel Stable v3.1</span>
              </div>
            )}
@@ -195,7 +195,7 @@ const App: React.FC = () => {
                  <i className="fa-solid fa-user-shield text-purple-400 text-lg"></i>
                </div>
                <div className="flex-1">
-                 <p className="text-sm font-black text-white tracking-widest">Vishal_ADMIN</p>
+                 <p className="text-sm font-black text-white tracking-widest">Vijay_ADMIN</p>
                  <div className="flex items-center gap-2 mt-0.5">
                    <span className="w-1.5 h-1.5 rounded-full bg-green-500"></span>
                    <p className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Root Authorized</p>
@@ -258,15 +258,15 @@ const App: React.FC = () => {
             <div className="absolute inset-0 opacity-[0.05] pointer-events-none" 
                  style={{backgroundImage: 'radial-gradient(#fff 1px, transparent 0)', backgroundSize: '50px 50px'}}></div>
 
-            <div className={`riyu-avatar-container z-10 w-full max-w-md aspect-[3/4] overflow-hidden glass-card p-2 shadow-2xl transition-all duration-700 ${isLive ? 'active scale-105' : 'grayscale-[0.4] opacity-80'}`}>
-               <img src={riyuProfileImg} className="w-full h-full object-cover transition-all duration-1000" alt="Riyu UI" />
+            <div className={`tomar-avatar-container z-10 w-full max-w-md aspect-[3/4] overflow-hidden glass-card p-2 shadow-2xl transition-all duration-700 ${isLive ? 'active scale-105' : 'grayscale-[0.4] opacity-80'}`}>
+               <img src={tomarProfileImg} className="w-full h-full object-cover transition-all duration-1000" alt="Tomar UI" />
                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent flex items-end p-14">
                   <div className="w-full">
                     <div className="flex items-center gap-3 mb-3">
                       <span className="px-2 py-0.5 bg-purple-500/20 border border-purple-500/30 rounded text-[9px] font-black text-purple-400 uppercase tracking-widest">Active_Kernel</span>
                       <span className="px-2 py-0.5 bg-pink-500/20 border border-pink-500/30 rounded text-[9px] font-black text-pink-400 uppercase tracking-widest">Voice_HD</span>
                     </div>
-                    <h3 className="text-4xl font-black text-white tracking-widest drop-shadow-lg">RIYU_AI_OS</h3>
+                    <h3 className="text-4xl font-black text-white tracking-widest drop-shadow-lg">TOMAR_AI_OS</h3>
                     <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mt-2">Personal Assistant to Vijay</p>
                   </div>
                </div>
@@ -317,7 +317,7 @@ const App: React.FC = () => {
                    <div className={`message-bubble max-w-[85%] ${m.sender === 'user' ? 'bg-purple-600/10 border border-purple-500/20 text-purple-100' : 'bg-white/[0.04] border border-white/5 text-slate-300 shadow-lg'}`}>
                      <div className="flex items-center gap-3 mb-4 opacity-40 text-[10px] font-black tracking-[0.2em] mono">
                         <span className={m.sender === 'user' ? 'text-purple-400' : 'text-pink-400'}>
-                          {m.sender === 'user' ? '> USER_VIJAY' : '> RIYU_CORE'}
+                          {m.sender === 'user' ? '> USER_VIJAY' : '> TOMAR_CORE'}
                         </span>
                         <span className="text-slate-600">•</span>
                         <span>{m.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}</span>
@@ -359,7 +359,7 @@ const App: React.FC = () => {
                       <i className="fa-solid fa-microchip"></i> Neural Core V3
                     </p>
                   </div>
-                  <p className="text-[10px] font-bold text-slate-600 uppercase tracking-widest">Cyber_With_Vijay © 2025</p>
+                  <p className="text-[10px] font-bold text-slate-600 uppercase tracking-widest">Vijay · Tomar AI System © 2025</p>
                 </div>
              </div>
           </div>
@@ -381,7 +381,7 @@ const App: React.FC = () => {
                 MEMORY_CACHE: {isSyncing ? 'WRITING...' : 'IDLE'}
               </span>
            </div>
-           <div className="text-slate-400 tracking-[0.4em]">CYBER_WITH_Riyu // RIYU_INTELLIGENCE // KALI_LINUX_EDITION</div>
+           <div className="text-slate-400 tracking-[0.4em]">VIJAY // TOMAR_INTELLIGENCE // KALI_LINUX_EDITION</div>
         </footer>
       </main>
     </div>

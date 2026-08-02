@@ -21,7 +21,7 @@ except ImportError:
 
 load_dotenv()
 
-app = FastAPI(title="Cyber_With_vishal_Backend")
+app = FastAPI(title="Tomar AI System Backend")
 
 app.add_middleware(
     CORSMiddleware,
@@ -48,7 +48,7 @@ class OfflineController:
         self.engine.setProperty('rate', 160)
         
     def speak(self, text):
-        print(f"Riyu (Offline): {text}")
+        print(f"Tomar (Offline): {text}")
         self.engine.say(text)
         self.engine.runAndWait()
 
@@ -59,7 +59,7 @@ class OfflineController:
             self.speak(f"Babu, battery status is: {res}")
         elif "open terminal" in text:
             subprocess.Popen(["gnome-terminal"])
-            self.speak("Terminal khul gaya hai, vishal.")
+            self.speak("Terminal khul gaya hai, Vijay.")
         elif "system load" in text or "cpu load" in text:
             res = subprocess.getoutput("uptime | awk '{print $10}'")
             self.speak(f"System load current level: {res}")
@@ -72,11 +72,11 @@ class OfflineController:
         else:
             self.speak("Sorry Babu, I didn't get that in offline mode. I'll try my best though.")
 
-offline_riyu = OfflineController()
+offline_tomar = OfflineController()
 
 @app.on_event("startup")
 async def startup_db_client():
-    print("🚀 Cyber_With_vishal: Linux Backend Online")
+    print("🚀 Tomar AI System: Linux Backend Online")
 
 @app.on_event("shutdown")
 async def shutdown_db_client():
@@ -84,13 +84,13 @@ async def shutdown_db_client():
 
 @app.get("/")
 async def root():
-    return {"status": "CWV_OS_ONLINE", "version": "3.1.0", "offline_engine": "Vosk+Pyttsx3 Ready"}
+    return {"status": "TOMAR_OS_ONLINE", "version": "3.1.0", "offline_engine": "Vosk+Pyttsx3 Ready"}
 
 @app.post("/offline/execute")
 async def execute_offline(command: dict):
     # This endpoint is called when Frontend detects no internet
     query = command.get("text", "")
-    offline_riyu.handle_command(query)
+    offline_tomar.handle_command(query)
     return {"status": "executed"}
 
 @app.get("/logs/agent/{agent_id}")

@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# Cyber_With_Vijay Launcher
+# Tomar AI System (Vijay) Launcher
 
 # Load environment variables
 if [ -f .env ]; then
   export $(echo $(cat .env | sed 's/#.*//' | xargs) | envsubst)
 fi
 
-echo "🚀 Launching Cyber_With_Vijay Command Center..."
+echo "🚀 Launching Tomar AI System Command Center..."
 
 # Start Backend in background
 cd backend

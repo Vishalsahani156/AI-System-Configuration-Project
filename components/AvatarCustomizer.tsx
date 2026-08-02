@@ -76,7 +76,7 @@ const AvatarCustomizer: React.FC<Props> = ({ config, stats, onUpdate, onClose })
       <div className="w-full max-w-md bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden shadow-2xl">
         <div className="p-6 border-b border-slate-800 flex justify-between items-center">
           <div>
-            <h3 className="text-xl font-bold text-white">Style Riyu</h3>
+            <h3 className="text-xl font-bold text-white">Style Tomar</h3>
             <p className="text-xs text-slate-500">Level {stats.level} Fashionista</p>
           </div>
           <button onClick={onClose} className="p-2 text-slate-400 hover:text-white transition-colors"><i className="fa-solid fa-xmark"></i></button>
@@ -90,7 +90,7 @@ const AvatarCustomizer: React.FC<Props> = ({ config, stats, onUpdate, onClose })
 
         <div className="p-6 bg-slate-950/50 border-t border-slate-800">
           <p className="text-[10px] text-slate-500 text-center">
-            Earn Relationship Points by chatting with Riyu to unlock more styles!
+            Earn Relationship Points by chatting with Tomar to unlock more styles!
           </p>
         </div>
       </div>

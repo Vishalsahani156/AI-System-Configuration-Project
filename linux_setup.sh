@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Cyber_With_Vijay - Linux Installation Script
+# Tomar AI System - Linux Installation Script
 # Supports: Ubuntu, Debian, Kali, Mint (apt) and Arch, Manjaro (pacman)
 
-echo "🚀 Starting Cyber_With_Riyu AI Installation..."
+echo "🚀 Starting Tomar AI System Installation..."
 
 # 1 + 2. System Update & Dependencies (detect package manager)
 echo "📦 Installing system dependencies..."

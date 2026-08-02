@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+pymongo
+motor
+pyotp
+passlib[bcrypt]
+python-jose[cryptography]
+python-dotenv
+# Offline voice engine (needs system libs: portaudio, ffmpeg, espeak)
+vosk
+pyttsx3
+SpeechRecognition
+pyaudio

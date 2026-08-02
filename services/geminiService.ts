@@ -20,7 +20,7 @@ const linuxSystemTool: FunctionDeclaration = {
 // TOOL: Web & Media Control
 const webControlTool: FunctionDeclaration = {
   name: 'controlWebAndMedia',
-  description: 'Open websites, search Google, or play music on YouTube/Spotify for Vishal.',
+  description: 'Open websites, search Google, or play music on YouTube/Spotify for Vijay.',
   parameters: {
     type: Type.OBJECT,
     properties: {
@@ -67,7 +67,7 @@ export class GeminiService {
   private buildMemoryContext(history: ChatMessage[]): string {
     const persistentMemory = localStorage.getItem('CWV_MEMORY_NOTES') || 'None';
     const chatLog = history.slice(-15).map(m => `${m.sender.toUpperCase()}: ${m.text}`).join('\n');
-    return `[MEMORY_SYNC]: ${persistentMemory}\n[SESSION_HISTORY]:\n${chatLog}\nNote: Call user Vishal. Use Hinglish. You have OS root-level logic authority.`;
+    return `[MEMORY_SYNC]: ${persistentMemory}\n[SESSION_HISTORY]:\n${chatLog}\nNote: Call user Vijay. Use Hinglish. You have OS root-level logic authority.`;
   }
 
   async startLive(
@@ -125,10 +125,10 @@ export class GeminiService {
 
                 // In the real Linux setup, the model will call executeLinuxCommand with 'xdg-open'
                 // Here we provide the logic to the model that the tool is firing.
-                console.log(`[RIYU OS] Opening Browser: xdg-open ${targetUrl}`);
+                console.log(`[TOMAR OS] Opening Browser: xdg-open ${targetUrl}`);
                 result = `Babu, Maine ${platform || 'web'} pe "${query}" open kar diya hai. Browser check kijiye!`;
               } else if (fc.name === 'executeLinuxCommand') {
-                result = `Riyu: Executed OS Command [${fc.args.command}]. System process running.`;
+                result = `Tomar: Executed OS Command [${fc.args.command}]. System process running.`;
               }
 
               sessionPromise.then((s: any) => s.sendToolResponse({

@@ -1,0 +1,42 @@
+# Tomar AI System — full stack: frontend (Vite) + backend (FastAPI) + MongoDB.
+# Redis is intentionally not included: the project does not use it.
+
+services:
+  mongo:
+    image: mongo:7
+    restart: unless-stopped
+    volumes:
+      - mongo_data:/data/db
+    ports:
+      - "27017:27017"
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build: ./backend
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      # Point at the containerized MongoDB by default (self-contained stack).
+      # Remove this line to fall back to the MONGO_URI in .env (e.g. Atlas).
+      MONGO_URI: mongodb://mongo:27017
+    ports:
+      - "8000:8000"
+    depends_on:
+      mongo:
+        condition: service_healthy
+
+  frontend:
+    build: .
+    restart: unless-stopped
+    env_file: .env   # provides GEMINI_API_KEY to the Vite dev server
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+volumes:
+  mongo_data:

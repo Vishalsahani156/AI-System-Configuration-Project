@@ -93,7 +93,7 @@ const App: React.FC = () => {
         setMessages(prev => [...prev, { id: Date.now().toString(), sender: 'ai', text: response, timestamp: new Date() }]);
       }
     } catch (e) { 
-      setMessages(prev => [...prev, { id: Date.now().toString(), sender: 'ai', text: "TOMAR: Signal lost. Vijay, local memory update checked.", timestamp: new Date() }]);
+      setMessages(prev => [...prev, { id: Date.now().toString(), sender: 'ai', text: "TOMAR: Connection lost. Vijay, your conversation is saved locally.", timestamp: new Date() }]);
     }
   };
 
@@ -309,7 +309,7 @@ const App: React.FC = () => {
                     <div className="w-24 h-24 border border-dashed border-slate-700 rounded-full flex items-center justify-center mb-8 animate-spin-slow">
                       <i className="fa-solid fa-robot text-4xl"></i>
                     </div>
-                    <p className="text-[11px] font-black uppercase tracking-[1em] text-center">Connection Established.<br/>Babu, aadesh kijiye.</p>
+                    <p className="text-[11px] font-black uppercase tracking-[1em] text-center">Connection Established.<br/>Awaiting your command.</p>
                  </div>
                )}
                {messages.map((m) => (
@@ -336,7 +336,7 @@ const App: React.FC = () => {
                   <div className="flex-1 relative">
                     <textarea 
                       className="w-full bg-white/5 border border-white/10 rounded-[2.5rem] p-7 text-sm text-white resize-none h-20 outline-none focus:border-purple-500/50 transition-all relative z-10 font-medium placeholder:text-slate-600" 
-                      placeholder="Enter system prompt (Hinglish supported)..."
+                      placeholder="Enter your command (English / Hindi supported)..."
                       value={input} 
                       onChange={e => setInput(e.target.value)}
                       onKeyDown={e => e.key === 'Enter' && !e.shiftKey && (e.preventDefault(), handleSendMessage())}

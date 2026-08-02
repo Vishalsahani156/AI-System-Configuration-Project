@@ -56,10 +56,10 @@ class OfflineController:
         text = text.lower()
         if "check battery" in text or "battery status" in text:
             res = subprocess.getoutput("acpi -b")
-            self.speak(f"Babu, battery status is: {res}")
+            self.speak(f"Battery status: {res}")
         elif "open terminal" in text:
             subprocess.Popen(["gnome-terminal"])
-            self.speak("Terminal khul gaya hai, Vijay.")
+            self.speak("Terminal opened, Vijay.")
         elif "system load" in text or "cpu load" in text:
             res = subprocess.getoutput("uptime | awk '{print $10}'")
             self.speak(f"System load current level: {res}")
@@ -68,9 +68,9 @@ class OfflineController:
             self.speak(f"Files are: {res}")
         elif "volume up" in text:
             subprocess.run(["amixer", "-D", "pulse", "sset", "Master", "10%+"])
-            self.speak("Awaaz badha di hai.")
+            self.speak("Volume increased.")
         else:
-            self.speak("Sorry Babu, I didn't get that in offline mode. I'll try my best though.")
+            self.speak("Sorry, I didn't catch that in offline mode. Please try again.")
 
 offline_tomar = OfflineController()
 

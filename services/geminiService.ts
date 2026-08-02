@@ -34,7 +34,7 @@ const webControlTool: FunctionDeclaration = {
 
 const visionTool: FunctionDeclaration = {
   name: 'analyzeEnvironment',
-  description: 'Uses the camera to see what Babu is showing or to analyze the screen.',
+  description: 'Uses the camera to see what the user is showing or to analyze the screen.',
   parameters: { type: Type.OBJECT, properties: {} }
 };
 
@@ -67,7 +67,7 @@ export class GeminiService {
   private buildMemoryContext(history: ChatMessage[]): string {
     const persistentMemory = localStorage.getItem('CWV_MEMORY_NOTES') || 'None';
     const chatLog = history.slice(-15).map(m => `${m.sender.toUpperCase()}: ${m.text}`).join('\n');
-    return `[MEMORY_SYNC]: ${persistentMemory}\n[SESSION_HISTORY]:\n${chatLog}\nNote: Call user Vijay. Use Hinglish. You have OS root-level logic authority.`;
+    return `[MEMORY_SYNC]: ${persistentMemory}\n[SESSION_HISTORY]:\n${chatLog}\nNote: Address the user as Vijay. Respond in professional English (use Hindi only if the user does). You have OS root-level logic authority.`;
   }
 
   async startLive(
@@ -126,7 +126,7 @@ export class GeminiService {
                 // In the real Linux setup, the model will call executeLinuxCommand with 'xdg-open'
                 // Here we provide the logic to the model that the tool is firing.
                 console.log(`[TOMAR OS] Opening Browser: xdg-open ${targetUrl}`);
-                result = `Babu, Maine ${platform || 'web'} pe "${query}" open kar diya hai. Browser check kijiye!`;
+                result = `I've opened "${query}" on ${platform || 'the web'}. Please check your browser.`;
               } else if (fc.name === 'executeLinuxCommand') {
                 result = `Tomar: Executed OS Command [${fc.args.command}]. System process running.`;
               }

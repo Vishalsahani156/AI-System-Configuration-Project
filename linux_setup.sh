@@ -8,13 +8,14 @@ echo "🚀 Starting Tomar AI System Installation..."
 # 1 + 2. System Update & Dependencies (detect package manager)
 echo "📦 Installing system dependencies..."
 if command -v apt-get &>/dev/null; then
-    sudo apt-get update && sudo apt-get upgrade -y
+    sudo apt-get update
     sudo apt-get install -y python3 python3-pip python3-venv \
         portaudio19-dev libasound2-dev ffmpeg \
         libavformat-dev libavcodec-dev libswresample-dev \
         libavutil-dev libsdl2-dev build-essential nodejs npm
 elif command -v pacman &>/dev/null; then
-    sudo pacman -Syu --noconfirm --needed python python-pip \
+    # --needed skips already-installed packages; no -u so it won't full-upgrade the system
+    sudo pacman -S --needed --noconfirm python python-pip \
         portaudio ffmpeg sdl2 base-devel nodejs npm
 else
     echo "❌ Unsupported system: need apt-get or pacman. Install deps manually."

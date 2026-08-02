@@ -1,13 +1,13 @@
 # Tomar AI System
 
-**Tomar AI System** is a real-time, multilingual AI command center powered by the **Tomar AI Assistant** — a bilingual (Hinglish) voice assistant with OS-level tool-calling, multi-agent switching, live camera/screen vision, and an offline fallback engine. Branding/ownership: **Vijay**.
+**Tomar AI System** is a real-time, multilingual AI command center powered by the **Tomar AI Assistant** — a bilingual (English / Hindi) voice assistant with OS-level tool-calling, multi-agent switching, live camera/screen vision, and an offline fallback engine. Branding/ownership: **Vijay**.
 
 ---
 
 ## Project Overview
 
 ### What it does
-- **Speech-to-speech voice assistant** — talk to Tomar in Hindi/English (Hinglish); it responds with real-time audio via the Gemini Live API.
+- **Speech-to-speech voice assistant** — talk to Tomar in English or Hindi; it responds with real-time audio via the Gemini Live API.
 - **OS control via tool calls** — Tomar can trigger shell commands, web/media actions (Google/YouTube/Spotify), and camera/screen analysis.
 - **Multi-agent workspace** — switch between specialized agents (Core assistant, Red Team, Blue Team, Code Master, Automation).
 - **Persistent memory** — conversation history is cached locally and agent logs are stored in MongoDB.
@@ -16,7 +16,7 @@
 ### Main features
 | Feature | Detail |
 |---------|--------|
-| Tomar voice | Real-time Hinglish speech-to-speech (Gemini native-audio) |
+| Tomar voice | Real-time bilingual (English / Hindi) speech-to-speech (Gemini native-audio) |
 | Visual analysis | Camera / screen capture fed to the model on request |
 | System memory | Local vault (localStorage) + MongoDB agent logs |
 | OS control | Shell command tool calls routed through the backend bridge |

@@ -2,6 +2,15 @@
 
 **Tomar AI System** is a real-time, multilingual AI command center powered by the **Tomar AI Assistant** — a bilingual (English / Hindi) voice assistant with OS-level tool-calling, multi-agent switching, live camera/screen vision, and an offline fallback engine. Branding/ownership: **Vijay**.
 
+## 🚀 Live Demo (Render)
+
+| Service | URL |
+|---------|-----|
+| **Frontend** | https://ai-system-configuration-project.onrender.com |
+| **Backend API** | https://ai-system-configuration-backend.onrender.com |
+
+> Both services run on Render's free tier and spin down when idle — the first request after inactivity can take ~50s to wake. OS-control and offline-voice features only work on a native/local install, not on the cloud host.
+
 ---
 
 ## Project Overview
@@ -244,6 +253,28 @@ curl -X POST http://localhost:8000/offline/execute -H 'Content-Type: application
    ```
    Note: the Gemini key is bundled into client assets at build time — front the app with your own auth/proxy if the key must stay private.
 4. Point `MONGO_URI` at a managed MongoDB (e.g. Atlas) for durable storage.
+
+### Deploying on Render
+
+A `render.yaml` blueprint is included. MongoDB is not hosted on Render — use **MongoDB Atlas** (free tier) and set its URI as `MONGO_URI`.
+
+**Frontend — Static Site**
+| Setting | Value |
+|---------|-------|
+| Root Directory | *(blank — repo root)* |
+| Build Command | `npm install && npm run build` |
+| Publish Directory | `dist` |
+| Env var | `GEMINI_API_KEY` |
+
+**Backend — Web Service (Python 3)**
+| Setting | Value |
+|---------|-------|
+| Root Directory | `backend` |
+| Build Command | `pip install -r requirements.txt` |
+| Start Command | `uvicorn main:app --host 0.0.0.0 --port $PORT` |
+| Env var | `MONGO_URI` (Atlas connection string) |
+
+> The backend **Start Command must be `uvicorn ... --port $PORT`** — Render's default `gunicorn` command fails (FastAPI is ASGI, not WSGI). Cloud installs use `backend/requirements.txt` (no audio libs); offline-voice deps live in `backend/requirements-offline.txt` for local/Docker only.
 
 ---
 

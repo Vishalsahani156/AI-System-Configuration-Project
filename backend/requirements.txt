@@ -1,3 +1,5 @@
+# Core backend deps — safe to install anywhere (Render, cloud, no audio hardware).
+# Offline voice engine libs live in requirements-offline.txt (need portaudio/espeak).
 fastapi
 uvicorn[standard]
 pymongo
@@ -6,8 +8,3 @@ pyotp
 passlib[bcrypt]
 python-jose[cryptography]
 python-dotenv
-# Offline voice engine (needs system libs: portaudio, ffmpeg, espeak)
-vosk
-pyttsx3
-SpeechRecognition
-pyaudio

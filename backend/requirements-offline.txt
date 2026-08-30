@@ -1,0 +1,7 @@
+# Offline voice engine — needs system libs (portaudio, ffmpeg, espeak) and audio
+# hardware. Installed only in Docker / local (linux_setup.sh), NOT on Render.
+# main.py guards these imports with try/except, so the backend runs without them.
+vosk
+pyttsx3
+SpeechRecognition
+pyaudio

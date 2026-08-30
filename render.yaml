@@ -1,0 +1,24 @@
+# Render Blueprint — deploy frontend (static) + backend (web service).
+# MongoDB is NOT here: Render has no managed Mongo. Use MongoDB Atlas (free tier)
+# and paste its connection string into MONGO_URI below in the Render dashboard.
+services:
+  # Backend — FastAPI web service
+  - type: web
+    name: tomar-backend
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements-cloud.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: MONGO_URI
+        sync: false   # set in dashboard: your MongoDB Atlas URI
+
+  # Frontend — Vite/React static site
+  - type: web
+    name: tomar-frontend
+    runtime: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false   # set in dashboard; NOTE: baked into the browser bundle

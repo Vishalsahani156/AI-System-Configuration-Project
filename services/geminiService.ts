@@ -54,7 +54,13 @@ export class GeminiService {
   }
 
   private initChat() {
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+    // No key (e.g. env var not set on the host) → skip client creation instead of
+    // throwing, which would crash the whole React tree to a blank screen.
+    if (!process.env.API_KEY) {
+      console.warn('GEMINI_API_KEY is not set — chat/voice disabled until it is configured.');
+      return;
+    }
+    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
     this.chatSession = ai.chats.create({
       model: 'gemini-3-flash-preview',
       config: {
@@ -87,7 +93,8 @@ export class GeminiService {
       }
     } catch (e) { throw e; }
 
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+    if (!process.env.API_KEY) throw new Error('GEMINI_API_KEY is not configured.');
+    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
     this.audioContexts.input = new AudioContext({ sampleRate: 16000 });
     this.audioContexts.output = new AudioContext({ sampleRate: 24000 });
 
@@ -175,7 +182,8 @@ export class GeminiService {
   }
 
   async sendChatMessage(message: string): Promise<string> {
-    const result = await this.chatSession!.sendMessage({ message });
+    if (!this.chatSession) return "GEMINI_API_KEY is not configured, so I can't respond yet.";
+    const result = await this.chatSession.sendMessage({ message });
     return result.text || "";
   }
 }
